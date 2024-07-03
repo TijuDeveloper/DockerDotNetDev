@@ -23,13 +23,13 @@ jobs:
           dotnet-version: '6.0.x'
 
       - name: Restore
-        run: dotnet restore ./StudentServices.sln
+        run: dotnet restore ./StudentServices/StudentServices.sln
 
       - name: Build
-        run: dotnet build ./StudentServices.sln --configuration Release --no-restore
+        run: dotnet build ./StudentServices/StudentServices.sln --configuration Release --no-restore
 
       - name: Publish
-        run: dotnet publish ./StudentServices.sln --configuration Release --no-build --output '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
+        run: dotnet publish ./StudentServices/StudentServices.sln --configuration Release --no-build --output '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
         
       - name: Deployment
         uses: azure/webapps-deploy@v2

@@ -9,7 +9,7 @@ on:
 env:
   AZURE_WEBAPP_NAME: EmployeeManagument
   AZURE_WEBAPP_PACKAGE_PATH: "./publishDockerPackage"
-  DOCKER_IMAGE_NAME: 'employeemanagumentimage'
+  DOCKER_IMAGE_NAME: 'dotnet_mvc_repo'
 
 jobs:
   publish:
@@ -18,7 +18,7 @@ jobs:
     steps:
      - uses: actions/checkout@v2
      - name: Build the Docker image
-       run: docker build . --file Dockerfile --tag '${{env.DOCKER_IMAGE_NAME}}':latest
+       run: docker build . --file ./StudentServices/Dockerfile --tag '${{env.DOCKER_IMAGE_NAME}}':latest
 
      - name: Docker Login
        run: docker login --username '${{secrets.DOCKER_LOGIN}}' --password '${{secrets.DOCKER_PASSWORD}}'
